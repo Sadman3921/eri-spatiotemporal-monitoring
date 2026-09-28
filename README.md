@@ -1,4 +1,4 @@
-# ERI Spatiotemporal Environmental Monitoring Website
+# Spatiotemporal Environmental Monitoring Website
 
 Static single-page research website designed in the visual spirit of the reference academic project site.
 
