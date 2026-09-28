@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Lightweight Learning and Information-State–Driven Planning for Spatiotemporal Environmental Monitoring." />
+  <title>ERI | Spatiotemporal Environmental Monitoring</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main>
+    <section class="hero section-pad">
+      <div class="container narrow center">
+        <h1>ERI: Lightweight Learning and Information-State–Driven Planning for Spatiotemporal Environmental Monitoring</h1>
+        <div class="authors">
+          <span>Tauhidul Alam</span><span>Sadman Islam</span><span>Bright Asare</span>
+        </div>
+        <p class="affiliation">Department of Computer Science, Lamar University</p>
+        <div class="hero-actions">
+          <a class="pill" href="assets/docs/Project_Description.pdf" target="_blank" rel="noopener">Project PDF</a>
+          <a class="pill" href="assets/docs/Pine_Island_Bayou_Dataset.xlsx" download>Dataset</a>
+          <a class="pill" href="assets/docs/visualization_code.py" download>Code</a>
+        </div>
+      </div>
+
+      <div class="container overview-figure-wrap">
+        <img class="overview-figure" src="assets/images/research_plan.png" alt="Project research plan showing spatiotemporal field modeling, lightweight policy learning, multi-ASV coordination, and experimental validation." />
+        <p class="figure-tagline">Onboard, information-driven environmental monitoring with lightweight field models, informative decision policies, and autonomous surface vehicles.</p>
+      </div>
+    </section>
+
+    <section class="showcase-strip">
+      <div class="carousel-shell container wide">
+        <button class="carousel-arrow left" type="button" aria-label="Previous preview">&#10094;</button>
+        <div class="carousel-track" id="topCarousel">
+          <figure class="showcase-card active"><img src="assets/gifs/Pine_Island_Chlorophyll_RFU.gif" alt="Animated chlorophyll RFU map over Pine Island Bayou" /></figure>
+          <figure class="showcase-card"><img src="assets/gifs/Pine_Island_Temp_degC.gif" alt="Animated temperature map over Pine Island Bayou" /></figure>
+          <figure class="showcase-card"><img src="assets/gifs/Pine_Island_ODO_mg_L.gif" alt="Animated dissolved oxygen map over Pine Island Bayou" /></figure>
+        </div>
+        <button class="carousel-arrow right" type="button" aria-label="Next preview">&#10095;</button>
+        <div class="carousel-dots" aria-label="Carousel position"></div>
+      </div>
+    </section>
+
+    <section class="section-pad">
+      <div class="container reading">
+        <h2 class="center">Abstract</h2>
+        <p>Surface waters can change over hours to days under contamination events such as fuel and oil spills, chemical releases, and harmful algal blooms. This project investigates how autonomous surface vehicles (ASVs) with multimodal sensors can repeatedly collect informative in-situ measurements across lakes, bayous, and rivers while operating under strict onboard computation, energy, sensing, and communication limits.</p>
+        <p>The project develops a low-rank spatiotemporal field modeling framework, compact information-state updates, lightweight on-device decision policies, and limited-range multi-robot coordination. The goal is to let robots decide <em>where</em>, <em>when</em>, and <em>how</em> to sample so that environmental fields can be estimated accurately without relying on heavy offboard computation.</p>
+      </div>
+    </section>
+
+    <section class="section-pad compact-top">
+      <div class="container reading">
+        <h2>Method</h2>
+        <h3>System Overview</h3>
+        <p>The framework treats environmental monitoring as a robotic information gathering problem. Incoming measurements update a compact information state that summarizes the current field estimate and uncertainty. Candidate sensing locations are scored by expected information gain together with mission costs, and a lightweight policy selects the next action for real-time execution on the ASV.</p>
+
+        <div class="two-col method-grid">
+          <article>
+            <h3>Low-Rank Field Modeling</h3>
+            <p>A dynamic scalar field such as temperature, dissolved oxygen, chlorophyll, or pollution concentration is represented with a compact set of spatial basis functions:</p>
+            <div class="equation">f(x,t) ≈ h(x)<sup>T</sup>a<sub>t</sub></div>
+            <p>The latent weights evolve over time, providing a scalable representation of spatial and temporal variation.</p>
+          </article>
+          <article>
+            <h3>Information-State Planning</h3>
+            <p>The information state stores the estimated field weights and their uncertainty. Candidate locations are ranked using uncertainty and approximate mutual information while accounting for travel distance, heading change, arrival time, energy, data age, trend, and safety constraints.</p>
+          </article>
+        </div>
+
+        <h3>Lightweight Informative Policy</h3>
+        <p>The decision policy is designed for real robot deployment. It consumes compact information-state features, selects among a small set of informative candidate locations, and is intended to be compressed and quantized for resource-constrained onboard execution.</p>
+      </div>
+    </section>
+
+    <section class="section-pad soft-section">
+      <div class="container reading">
+        <h2>Research Objectives</h2>
+        <div class="objective-grid">
+          <article><span class="objective-index">RO1</span><h3>Modeling & Coordination</h3><p>Develop efficient spatiotemporal field models and decentralized multi-robot coordination with limited communication.</p></article>
+          <article><span class="objective-index">RO2</span><h3>Lightweight Decision-Making</h3><p>Develop deployable information-state–driven policies that can make safe and efficient sampling decisions in real time.</p></article>
+          <article><span class="objective-index">RO3</span><h3>Experimental Validation</h3><p>Validate the framework through theoretical analysis, large-scale simulation, and real-world field experiments.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-pad" id="field-experiments">
+      <div class="container reading">
+        <h2>Field Experiments</h2>
+        <p>Preliminary deployments use a BlueBoat autonomous surface vehicle equipped with a YSI EXO multiparameter sonde for in-situ water quality measurements. Field trials at Pine Island Bayou in Lumberton, Texas provide georeferenced measurements for environmental field visualization, simulation design, sensing-noise characterization, and subsequent algorithm validation.</p>
+        <h3>Autonomous Surface Vehicle Platform</h3>
+        <img class="field-figure" src="assets/images/field_platform.png" alt="BlueBoat field platform and Pine Island Bayou mission trajectory" />
+        <p class="caption">BlueBoat field platform and mission trajectory used for Pine Island Bayou environmental data collection.</p>
+      </div>
+    </section>
+
+    <section class="section-pad results-section" id="visualizations">
+      <div class="container reading">
+        <h2>Environmental Field Visualizations</h2>
+        <p>The animations below reconstruct parameter-specific spatial fields over real satellite imagery using the recorded ASV trajectory and georeferenced water-quality measurements. Select a parameter to view its evolving field map.</p>
+
+        <div class="filter-row" role="tablist" aria-label="Environmental parameter groups">
+          <button class="filter-btn active" data-filter="all" type="button">All</button>
+          <button class="filter-btn" data-filter="physical" type="button">Physical</button>
+          <button class="filter-btn" data-filter="chemical" type="button">Chemical</button>
+          <button class="filter-btn" data-filter="biological" type="button">Biological</button>
+          <button class="filter-btn" data-filter="optical" type="button">Optical / Solids</button>
+        </div>
+
+        <div class="viewer">
+          <div class="viewer-media"><img id="activeGif" src="assets/gifs/Pine_Island_Chlorophyll_RFU.gif" alt="Selected environmental field animation" /></div>
+          <div class="viewer-copy">
+            <span class="eyebrow" id="activeGroup">Biological</span>
+            <h3 id="activeTitle">Chlorophyll (RFU)</h3>
+            <p id="activeDescription">Spatial chlorophyll fluorescence field reconstructed from the ASV measurements collected along the Pine Island Bayou survey trajectory.</p>
+          </div>
+        </div>
+
+        <div class="parameter-grid" id="parameterGrid">
+          <button class="parameter-card" data-group="optical" data-src="assets/gifs/Pine_Island_Turbidity_FNU.gif" data-title="Turbidity (FNU)" data-description="Spatial turbidity field reconstructed from georeferenced sonde measurements."><span>Turbidity</span><small>FNU</small></button>
+          <button class="parameter-card" data-group="optical" data-src="assets/gifs/Pine_Island_TSS_mg_L.gif" data-title="Total Suspended Solids (mg/L)" data-description="Animated total suspended solids field over the surveyed water region."><span>TSS</span><small>mg/L</small></button>
+          <button class="parameter-card selected" data-group="biological" data-src="assets/gifs/Pine_Island_Chlorophyll_RFU.gif" data-title="Chlorophyll (RFU)" data-description="Spatial chlorophyll fluorescence field reconstructed from the ASV measurements collected along the Pine Island Bayou survey trajectory."><span>Chlorophyll</span><small>RFU</small></button>
+          <button class="parameter-card" data-group="biological" data-src="assets/gifs/Pine_Island_Chlorophyll_ug_L.gif" data-title="Chlorophyll (µg/L)" data-description="Concentration-based chlorophyll field mapped over the Pine Island Bayou survey area."><span>Chlorophyll</span><small>µg/L</small></button>
+          <button class="parameter-card" data-group="biological" data-src="assets/gifs/Pine_Island_BGA-PE_RFU.gif" data-title="BGA-PE (RFU)" data-description="Blue-green algae phycoerythrin fluorescence field reconstructed from the survey data."><span>BGA-PE</span><small>RFU</small></button>
+          <button class="parameter-card" data-group="biological" data-src="assets/gifs/Pine_Island_BGA-PE_ug_L.gif" data-title="BGA-PE (µg/L)" data-description="Concentration representation of the BGA-PE field across the surveyed water area."><span>BGA-PE</span><small>µg/L</small></button>
+          <button class="parameter-card" data-group="physical" data-src="assets/gifs/Pine_Island_Temp_degC.gif" data-title="Temperature (°C)" data-description="Water temperature field reconstructed from the moving ASV measurements."><span>Temperature</span><small>°C</small></button>
+          <button class="parameter-card" data-group="chemical" data-src="assets/gifs/Pine_Island_Cond_uS_cm.gif" data-title="Conductivity (µS/cm)" data-description="Electrical conductivity field over the Pine Island Bayou survey region."><span>Conductivity</span><small>µS/cm</small></button>
+          <button class="parameter-card" data-group="chemical" data-src="assets/gifs/Pine_Island_SpCond_uS_cm.gif" data-title="Specific Conductivity (µS/cm)" data-description="Specific conductivity field normalized for temperature effects."><span>Specific Cond.</span><small>µS/cm</small></button>
+          <button class="parameter-card" data-group="chemical" data-src="assets/gifs/Pine_Island_Sal_psu.gif" data-title="Salinity (psu)" data-description="Spatial salinity field reconstructed from georeferenced observations."><span>Salinity</span><small>psu</small></button>
+          <button class="parameter-card" data-group="chemical" data-src="assets/gifs/Pine_Island_nLF_Cond_uS_cm.gif" data-title="nLF Conductivity (µS/cm)" data-description="Non-linear-function conductivity field derived from the EXO sensor stream."><span>nLF Conductivity</span><small>µS/cm</small></button>
+          <button class="parameter-card" data-group="chemical" data-src="assets/gifs/Pine_Island_TDS_mg_L.gif" data-title="Total Dissolved Solids (mg/L)" data-description="Total dissolved solids field reconstructed along the survey trajectory."><span>TDS</span><small>mg/L</small></button>
+          <button class="parameter-card" data-group="chemical" data-src="assets/gifs/Pine_Island_ODO_sat.gif" data-title="Dissolved Oxygen Saturation (%)" data-description="Dissolved oxygen saturation field across the Pine Island Bayou survey area."><span>ODO Saturation</span><small>%</small></button>
+          <button class="parameter-card" data-group="chemical" data-src="assets/gifs/Pine_Island_ODO_mg_L.gif" data-title="Dissolved Oxygen (mg/L)" data-description="Dissolved oxygen concentration mapped over the surveyed water region."><span>Dissolved Oxygen</span><small>mg/L</small></button>
+          <button class="parameter-card" data-group="chemical" data-src="assets/gifs/Pine_Island_pH.gif" data-title="pH" data-description="Spatial pH field reconstructed from the EXO measurements."><span>pH</span><small>unitless</small></button>
+          <button class="parameter-card" data-group="chemical" data-src="assets/gifs/Pine_Island_pH_mV.gif" data-title="pH Electrode Potential (mV)" data-description="Electrode potential associated with the pH sensor response across the survey."><span>pH Potential</span><small>mV</small></button>
+          <button class="parameter-card" data-group="physical" data-src="assets/gifs/Pine_Island_Press_psi_a.gif" data-title="Pressure (psi a)" data-description="Absolute pressure field measured along the ASV trajectory."><span>Pressure</span><small>psi a</small></button>
+          <button class="parameter-card" data-group="physical" data-src="assets/gifs/Pine_Island_Depth_m.gif" data-title="Depth (m)" data-description="Water depth field reconstructed from the ASV sensor measurements."><span>Depth</span><small>m</small></button>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-pad">
+      <div class="container reading">
+        <h2>Research Plan</h2>
+        <div class="two-col plan-grid">
+          <article><h3>Task T1: Modeling and Coordination</h3><p>Construct compact spatiotemporal field models, update the information state online, generate informative candidate locations, and coordinate multiple ASVs under limited-range communication.</p></article>
+          <article><h3>Task T2: Lightweight Policy Learning</h3><p>Train a compact policy over information-state features using imitation learning, domain randomization, and reinforcement-learning fine-tuning for fast onboard action selection.</p></article>
+          <article><h3>Task T3: Analysis and Experimental Validation</h3><p>Evaluate theoretical properties, simulation performance, scalability, and real-world feasibility through field deployments and multi-robot experiments.</p></article>
+          <article><h3>Evaluation</h3><p>Planned metrics include field-estimation accuracy, information gain, time-to-hotspot, duplication rate, cycle latency, memory/runtime scaling, energy efficiency, safety, and adaptation performance.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-pad soft-section">
+      <div class="container reading">
+        <h2>Resources</h2>
+        <div class="resource-row">
+          <a href="assets/docs/Project_Description.pdf" target="_blank" rel="noopener"><strong>Project Description</strong><span>Research goals, methods, tasks, and validation plan</span></a>
+          <a href="assets/docs/Pine_Island_Bayou_Dataset.xlsx" download><strong>Pine Island Bayou Dataset</strong><span>Georeferenced water-quality measurements used in the visualizations</span></a>
+          <a href="assets/docs/visualization_code.py" download><strong>Visualization Code</strong><span>Python script for generating parameter-wise animated maps</span></a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container reading footer-inner">
+      <p><strong>Lightweight Learning and Information-State–Driven Planning for Spatiotemporal Environmental Monitoring</strong></p>
+      <p>Department of Computer Science, Lamar University</p>
+      <p class="footer-note">Research project website. Satellite imagery and map geometry in the generated environmental visualizations retain their original provider attributions.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
